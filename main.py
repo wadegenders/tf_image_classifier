@@ -61,14 +61,19 @@ if __name__ == "__main__":
     parser.add_argument('--batchsize', default=48, help='number of data samples per batch')
     parser.add_argument('--flatten', action='store_true', help='flatten data to be 1-dimensional')
     parser.add_argument('--testp', default=0.15, help='proportion of data to be excluded during training to test as validation')
+    parser.add_argument('--w', default=390, help='desired width to resize images')
+    parser.add_argument('--h', default=165, help='desired height to resize images')
+    parser.add_argument('--nclasses', default=2, help='number of classes')
+ 
     args = parser.parse_args()
 
     classes_folder = args.data
     data = DataSet(classes_folder)
     flatten_image = True if args.flatten else False
     even_class_p = True
-    trainer = Trainer(data, flatten_image, args.testp, even_class_p)
-    net = ConvNet(330, 788, 3, 2, 0.0001)
+    trainer = Trainer(data, flatten_image, args.testp, even_class_p, args.w, args.h)
+    #net = ConvNet(330, 788, 3, 2, 0.0001)
+    net = ConvNet(args.h, args.w, 3, args.nclasses, 0.0001)
     tb_dir = "tensorboard_train"
     if not os.path.exists(tb_dir):
         os.makedirs(tb_dir)

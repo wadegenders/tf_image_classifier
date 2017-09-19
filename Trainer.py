@@ -6,9 +6,11 @@ import numpy as np
 from timeit import default_timer as timer
 
 class Trainer():
-    def __init__(self, dataset, flatten, test_p, even_class_n):
+    def __init__(self, dataset, flatten, test_p, even_class_n, width, height):
         self.dataset = dataset
         self.normalizer = 255.0
+        self.width = width
+        self.height = height
 
         ###all class filenames in a dict, key is class name, value is an array holding tuples of fname and one hot correct label
         self.class_fnames = self.dataset.get_class_fnames()
@@ -53,7 +55,9 @@ class Trainer():
         self.j = 0
 
     def get_img_data(self, fname):
-        return np.expand_dims(np.array(Image.open(fname))/self.normalizer, 0)
+        img = Image.open(fname).resize((self.width, self.height))
+        #return np.expand_dims(np.array(Image.open(fname))/self.normalizer, 0)
+        return np.expand_dims(np.array(img)/self.normalizer, 0)
 
     def get_img_data_flatten(self, fname):
         return np.expand_dims(np.array(Image.open(fname)).flatten()/self.normalizer, 0)
