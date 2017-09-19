@@ -1,7 +1,7 @@
 # tf_image_classifier
 Simple, out-of-the-box multiclass image classification in Tensorflow. 
 
-#Notes
+# Notes
 Images must be organized into class folders as subdirectories in a 'data_dir' folder.
 ```
 data_dir/
@@ -10,14 +10,15 @@ data_dir/image_class_2
 .
 .
 .
+data_dir/image_class_N
 ```
-#Running the code
+# Running the code
 To train, run:
 ```
 python main.py --train --data /PATH/TO/data_dir
 ```
 
-#Dependencies
+# Dependencies
 Python 3.5.x
 Tensorflow 1.2.x
 Pillow 4.2
