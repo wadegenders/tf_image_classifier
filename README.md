@@ -12,6 +12,9 @@ data_dir/image_class_2
 .
 data_dir/image_class_N
 ```
+
+`image_class_1` should be a folder containing images of only images in class 1.
+
 # Running the code
 To train, run:
 ```
