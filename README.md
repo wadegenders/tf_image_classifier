@@ -1,5 +1,5 @@
 # tf_image_classifier
-Simple, out-of-the-box multiclass image classification in Tensorflow. 
+Simple, out-of-the-box multiclass Tensorflow image classifier. 
 
 # Notes
 Images must be organized into class folders as subdirectories in a 'data_dir' folder.
