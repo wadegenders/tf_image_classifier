@@ -22,7 +22,7 @@ python main.py --train --data /PATH/TO/data_dir
 ```
 
 # Dependencies
-Python 3.5.x
-Tensorflow 1.2.x
-Pillow 4.2
-Numpy 1.13
+* Python 3.5.x
+* Tensorflow 1.2.x
+* Pillow 4.2
+* Numpy 1.13
