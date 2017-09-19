@@ -18,7 +18,14 @@ data_dir/image_class_N
 # Running the code
 To train, run:
 ```
-python main.py --train --data /PATH/TO/data_dir
+python main.py --train --data /PATH/TO/data_dir --w 100 --h 100
+```
+Modify `--w` and `--h` to desired values for resizing images width and height
+
+To view training loss and test accuracy, run Tensorboard:
+
+```
+tensorboard --logdir='./tensorboard_train'
 ```
 
 # Dependencies
