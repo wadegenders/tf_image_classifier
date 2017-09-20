@@ -31,7 +31,6 @@ class Trainer():
         self.test_data = []
         if even_class_n is True:
             min_samples = min(n_class_samples)
-            #min_samples = 800
             print("MIN SAMPLES "+str(min_samples))
             self.test_n = int(min_samples*test_p)
             print("TEST N per class "+str(self.test_n))
@@ -49,18 +48,18 @@ class Trainer():
             self.get_img = self.get_img_data_flatten
         else:
             self.get_img = self.get_img_data
-        #if class_samples.count(class_samples[0]) == len(class_samples)
+
         print("TOTAL TEST SAMPLES "+str(len(self.test_data)))
         print("TOTAL TRAIN SAMPLES "+str(len(self.train_data)))
         self.j = 0
 
     def get_img_data(self, fname):
         img = Image.open(fname).resize((self.width, self.height))
-        #return np.expand_dims(np.array(Image.open(fname))/self.normalizer, 0)
         return np.expand_dims(np.array(img)/self.normalizer, 0)
 
     def get_img_data_flatten(self, fname):
-        return np.expand_dims(np.array(Image.open(fname)).flatten()/self.normalizer, 0)
+        img = Image.open(fname).resize((self.width, self.height))
+        return np.expand_dims(np.array(img).flatten()/self.normalizer, 0)
 
     def get_train_batch(self, batch_size):
         if self.j+batch_size < len(self.train_data):                                                                                 
@@ -73,7 +72,6 @@ class Trainer():
             self.j = 0
             epoch_over = True
             shuffle(self.train_data)
-            #print("test_over")
         train_batch, one_hots = self.fnames_to_batch(batch)
         return train_batch, one_hots, epoch_over 
 
